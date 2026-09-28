@@ -1,0 +1,66 @@
+definitions:
+  ai-observability_backend_internal_model.MessageRequest:
+    properties:
+      message:
+        type: string
+    required:
+    - message
+    type: object
+  ai-observability_backend_internal_model.MessageResponse:
+    properties:
+      response:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /health:
+    get:
+      description: Returns the current health state of the backend.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Check API health
+      tags:
+      - Health
+  /message:
+    post:
+      consumes:
+      - application/json
+      description: Accepts a JSON message payload and returns a response.
+      parameters:
+      - description: Message payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ai-observability_backend_internal_model.MessageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ai-observability_backend_internal_model.MessageResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Send a message
+      tags:
+      - Message
+swagger: "2.0"
