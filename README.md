@@ -46,6 +46,7 @@ Areas of experimentation include:
 
 ## File Tree
 
+```text
 artificial-intelligence-observability/
 │
 ├── backend/
@@ -144,6 +145,7 @@ artificial-intelligence-observability/
 │       Planned to communicate with the Go backend through REST APIs
 │       and eventually display interactive financial charts
 │       and AI-generated analysis.
-|
+│
 └── README.md
     └── Top-level project documentation.
+```
